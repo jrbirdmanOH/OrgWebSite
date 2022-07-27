@@ -1,0 +1,245 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y95KZV8NWN"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+ 
+    function gtag(){window.dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y95KZV8NWN');
+ 
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <TITLE>Epworth Park: Contact</TITLE>
+
+    <link rel="stylesheet" href="assets/css/vendor.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome/css/font-awesome.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        var gblSendEmailTo = "epworthpark@gmail.com";
+
+        function onAgreeToTermsChange(ctrl) {
+            var agreed = ctrl.checked;
+            var sendButton = document.getElementById("sendButton");
+            sendButton.disabled = !agreed;
+        }
+
+        function contactCottageOwner(cottageNumber, cottageOwnerEmail, cottageOwnerPhone) {
+
+            $("#message").text("I am interested in purchasing Cottage #" + cottageNumber + ' at Epworth Park.');
+            $("#service").val(1); //Real Estate
+            gblSendEmailTo = cottageOwnerEmail;
+            if (cottageOwnerPhone != "") {
+                $("#exampleModalLabel").text("Contact Cottage Owner @ " + cottageOwnerPhone + ' or use the contact form below.');
+            } else {
+                $("#exampleModalLabel").text("Contact Cottage Owner");
+            }
+
+            $('#btnTrigger').click();
+        }
+        
+        function contactWeddingPlanner(weddingPlannerPhone, weddingPlannerEmail, callWindow)
+        {
+            $("#message").text('I am considering having my wedding at Epworth Park.');
+            $("#service").val(4); //Weddings
+            gblSendEmailTo = weddingPlannerEmail;
+            if (weddingPlannerPhone != "") {
+                $("#exampleModalLabel").text("Contact our Wedding Planner @ " + weddingPlannerPhone + ' ' + callWindow + ' or use the contact form below');
+            } else {
+                $("#exampleModalLabel").text("Contact our Wedding Planner");
+            }
+
+            $('#btnTrigger').click();
+        }
+
+        function contactChautauquaPlanner(plannerPhone, plannerCallWindow, plannerEmail)
+        {
+            $("#message").text("I am interested in being a vendor at this year's Chautauqua Homecoming Days.");
+            $("#service").val(2); //Chautauqua Days
+            gblSendEmailTo = plannerEmail;
+            if (plannerPhone != "") {
+                $("#exampleModalLabel").text("Contact our Event Planner @ " + plannerPhone + ' ' + plannerCallWindow + ' or use the contact form below');
+            } else {
+                $("#exampleModalLabel").text("Contact our Event Planner");
+            }
+
+            $('#btnTrigger').click();
+        }
+
+        function contactPark() {
+            $("#message").text("");
+            $("#service").val(0); //please select
+            gblSendEmailTo = "epworthpark@gmail.com";
+            $("#exampleModalLabel").text("Contact Park Management");
+            $('#btnTrigger').click();
+        }
+
+        function processSendButton() {
+
+            var name = $('#first_name').val() + ' ' + $('#last_name').val();
+            var company = $('#companyName').val();
+            var service = $('#service option:selected').text();
+
+            // gtag('event','contact_us_click', {
+            //     'Name': name,
+            //     'Company': company,
+            //     'Service': service
+            // });
+
+            const ret = '%0D%0A';
+            var body = 'Name: ' + name + ret;
+            body += 'Phone Number: ' + $('#phone').val() + ret; 
+            body += 'Zip Code: ' + $('#zip-code').val() + ret; 
+            body += 'Service: ' + service + ret; 
+            body += 'Message:' + ret + $('#message').val().replace(/\n/g, ret) + ret; 
+            body += ret; //extra blank line at bottom
+            var url = 'mailto:' + gblSendEmailTo;
+            url += '?subject=ATTENTION REQUIRED: Contact from web site';
+            url += '&body=' + body;
+            //window.location.href=url;
+            gblSendEmailTo = "";
+
+            closeMe();
+
+            // gblSendEmailTo = "epworthpark@gmail.com";
+            // $("#message").text("");
+            // $("#service").val(0); //please select
+            // $("#exampleModalLabel").text("Contact Park Management");
+            // $("#btnCloseModal").click();
+        }
+
+        function notDoneYet(){
+            alert("This link or button is still under construction.");
+        }
+
+        function getUrlVars() {
+            var vars = {};
+            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+                vars[key] = value;
+            });
+            return vars;
+        }   
+
+        function getUrlParam(parameter, defaultvalue){
+            var urlparameter = defaultvalue;
+            if(window.location.href.indexOf(parameter) > -1){
+                urlparameter = getUrlVars()[parameter];
+                }
+            return urlparameter;
+        }
+        
+        $(function() {
+            var target = getUrlParam('target', '');
+            var email = getUrlParam('em', '');
+            var phone = getUrlParam('phone', '');
+            var callWindow = getUrlParam('cw', '');
+            var cottageNumber = getUrlParam('cn', '');
+            switch(target) {
+                case 'co':
+                    contactCottageOwner(cottageNumber, email, phone);
+                    break;
+                case 'wp':
+                    contactWeddingPlanner(phone, email, callWindow);
+                    break;
+                case 'cp': 
+                    contactChautauquaPlanner(phone, callWindow, email);
+                    break;
+                default:
+                    contactPark();
+                    break;
+            }
+        });
+ 
+    </script>
+</head>
+<body data-spy="scroll" data-target="#header-navbar" data-offset="140">
+<input id="hiddenField"></input>
+<div id="page-start-anchor"></div>
+<section id="contacts">
+    <div class="section bg-secondary">
+        <div class="section-content container">
+            <div class="text-center">
+                <small class="fs-1 font-family-secondary text-uppercase font-weight-bold letter-spacing-caption text-muted">
+                    We answer within 1 business week
+                </small>
+                <h1>Contact Us</h1>
+                <div id="exampleModalLabel"></div>    
+            </div>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <form class="row mt-17" onsubmit="processSendButton();">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label for="first_name" class="form-label">First name</label>
+                                <input type="text" class="form-control" id="first_name"/>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label for="last_name" class="form-label">Last name</label>
+                                <input type="text" class="form-control" id="last_name"/>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="text" class="form-control" id="phone"/>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label for="zip-code" class="form-label">Your zip code</label>
+                                <input type="text" class="form-control" id="zip-code"/>
+                            </div>
+                            <!-- <div class="form-group">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="email"/>
+                            </div> -->
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label for="service" class="form-label">Select your interest</label>
+                                <select class="custom-select" id="service">
+                                    <option value="0">(Please select)</option>
+                                    <option value="1">Real Estate</option>
+                                    <option value="2">Chautauqua Days</option>
+                                    <option value="3">Events</option>
+                                    <option value="4">Weddings</option>
+                                    <option value="5">Meetings</option>
+                                    <option value="6">Website</option>
+                                    <option value="7">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea id="message" class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12 d-flex justify-content-between align-items-center flex-column flex-md-row">
+                            <div class="form-group form-check mb-9 mb-md-0">
+                                <input type="checkbox" class="custom-checkbox" id="cbAgreeToTerms" onchange='onAgreeToTermsChange(this)'/>
+                                <label class="form-check-label" for="cbAgreeToTerms">
+                                    I've read and agree with the <a href="#">Terms & Policy</a>
+                                </label>
+                            </div>
+                            <div class="form-group mb-0">
+                                <button id="sendButton" class="btn btn-primary btn-lg" disabled=false>Send message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,52 @@
+{% set bottomNavbarItems = [
+    {text: 'Learn More', href: '#about', anchor: true, smoothScroll: false},
+    {text: 'Download', href: '#download', anchor: true,  smoothScroll: false},
+    {text: 'Donate', href: 'https://give.birds.cornell.edu/', anchor: false, smoothScroll: false},
+    {text: 'A Note from Pete', href: '#note', anchor: true,  smoothScroll: false},
+] %}
+
+<section class="header {{ headerClasses }}">
+    <div class="header-main bg-white">
+        <div class="container">
+            <div class="row">
+                <nav class="navbar navbar-expand-lg navbar-light w-100" id="header-navbar">
+                    <a class="navbar-brand font-weight-bold" href="index.html"><img src="assets/images/logo.gif" /></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            {% for item in bottomNavbarItems %}
+                            <li class="nav-item">
+                                <a class="nav-link text-uppercase {{ item.active ? 'active' : '' }}"
+                                   data-toggle="{{ item.smoothScroll ? 'smooth-scroll' : 'none' }}"
+                                   {% if item.anchor %}
+                                   href= "{{ window.location }}/index.html{{ item.href }}">
+                                   {% else %}
+                                   href= "{{ item.href }}">
+                                   {% endif %}
+                                    {{ item.text }}
+                                    {% if item.active %}
+                                    <span class="sr-only">(current)</span>
+                                    {% endif %}
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% if ctaButton %}
+                        <div class="navbar-spacer"></div>
+                        <a class="btn btn-outline-primary text-nowrap"
+                           href="{{ ctaButton.href }}"
+                           data-toggle="{{ ctaButton.smoothScroll ? 'smooth-scroll' : 'none' }}"
+                           target="{% if ctaButton.target %}{{ ctaButton.target }}{% else %}_blank{% endif %}">
+                            {{ ctaButton.text }}
+                        </a>
+                        {% endif %}
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>

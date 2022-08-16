@@ -46,17 +46,24 @@
     </script> -->
 
 <script>
-        function notDoneYet(){
+    function notDoneYet(){
             alert("This link or button is still under construction.");
         }
-    </script>
+</script>
     <script src="assets/js/contactusform.js"></script>
     <style>
         .smallbulletlist {
             font-size: smaller;
         }
     </style>
-    
+    <script>
+        function downloadFile() {
+            window.location = 'zip/GBNA77.zip';
+        };
+        function donateNow() {
+            window.open("https://give.birds.cornell.edu/", "_blank");
+        }
+</script>
 </head>
 <body data-spy="scroll" data-target="#header-navbar" data-offset="140">
 
@@ -128,9 +135,10 @@
                                 <ul>
                                     <li>Temporarily, you'll need a total of 21 GB -- 7 GB for the downloaded zip, 7 GB for the extacted files, and 7 GB for the installed software. Once it's installed, you'll only need 7 GB.</li>
                                 </ul>    
-                            <li><a href="zip/GBNA77.zip" download>Download</a> the GBNA zip file that contains all the setup files.</li>
+                            <li><button type="button" class="btn btn-primary" onclick='downloadFile();')>Download the GBNA 7.7 zip file</button></li>
                             <ul>
-                                <li>...this can take one to two hours (or more) depending on the speed of your connection.</li>
+                                <li>This contains all the setup files.</li>
+                                <li>And this can take one to two hours (or more) depending on the speed of your connection.</li>
                             </ul>
                             <li>Extract all the files in the zip to a folder.</li>
                             <ul>
@@ -143,8 +151,10 @@
                             <ul>
                                 <li>Once GBNA is installed, you don't need the downloaded zip and the setup files. Deleting them gives you 14 GB of disk space back.</li>
                             </ul>
-                            <li><a href="https://give.birds.cornell.edu/" target="_blank">Donate to Cornell Lab</a>.</li>
                         </ol>
+                        <button type="button" class="btn btn-primary" style="margin-bottom: 20px;" onclick='donateNow();')>Donate to Cornell Lab Now</button>
+                        <p>Learn more about the Cornell Lab of Ornithology, click the image below.</p>
+                        <a href="https://www.birds.cornell.edu/home/" target="_blank"><img src="assets/images/CLO.jpg"  style="border: 1px solid black;"/></a>
                     </div>
                 </div>
             </div>
@@ -167,7 +177,7 @@
                         <p>If you enjoy this software, please tell your friends, teachers, and local nature organizations about it.</p>
                         <p>Attention Mac users: a number of folks have been able to run this birding software on their Mac computers by first installing a Windows emulation program.
                             Parallels seems to get great reviews. Their web site is at <a href="https://www.parallels.com/" target="_blank">https://www.parallels.com/</a></p>
-                            
+                        <p><button type="button" class="btn btn-primary" onclick='downloadFile();')>Download the GBNA 7.7 zip file</button></p>   
                     </div>
                 </div>
             </div>

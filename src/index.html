@@ -61,8 +61,17 @@
             window.location = 'zip/GBNA77.zip';
         };
         function donateNow() {
-            window.open("https://give.birds.cornell.edu/", "_blank");
-        }
+            console.log('hit donateNow function');
+            // window.open("https://give.birds.cornell.edu/", "_blank");
+        };
+
+        $(function() {
+            console.log('hit the page loaded function');
+            $('a.navlink').click(console.log('navlink click'));
+            //$('#btnTrigger').hide();
+});
+
+
 </script>
 </head>
 <body data-spy="scroll" data-target="#header-navbar" data-offset="140">
@@ -104,7 +113,7 @@
                 <div class="row">
                     <div class="col">
                         <p>This software is FREE to everyone and being provided by Peter Thayer, president of Thayer Birding Software.</p>
-                        <p>This software will run on computers with Windows 7, 8, 10, and 11. Mac OS and Linux are no longer supported.</p>
+                        <p>This software will run on computers with Windows 7, 8, 10, and 11 and on Mac OS running Parallels. Mac OS (natively) and Linux are no longer supported.</p>
                         <p>Click the Download menu option or <a href="#download">click here</a> to get started!</p>
                         <p>If you like it, please consider supporting the birds with a <a href="https://give.birds.cornell.edu/" target="_blank">charitable donation</a> to Cornell Lab of Ornithology</p>
                         <p>A demonstration video can be viewed by clicking the following image.</p>
@@ -129,7 +138,7 @@
                             <li>Supported environments:</li>
                             <ol>
                                 <li>PCs or a Virtual Machine running Windows 7 through 11.  This includes Macs running <a href="https://www.parallels.com/products/desktop/" target="_blank">Parallels</a>.</li>
-                                <li>If you're viewing this on anything else (mobile device, Linux, or Mac OS) stop right now. GBNA will not run on any of these environments.</li>
+                                <li>If you're viewing this on anything else (mobile device (Android or iPhone), Linux, or Mac OS) stop right now. GBNA will not run on any of these environments.</li>
                             </ol>
                             <li>Make sure you have enough disk space to handle the download, the extracted setup files, and the installed software and media.</li>
                                 <ul>
